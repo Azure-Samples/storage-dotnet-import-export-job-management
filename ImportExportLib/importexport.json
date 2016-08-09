@@ -1,0 +1,1040 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "StorageImportExportLib",
+        "description": "The Storage Import/Export Client API.",
+        "version": "2014-11-01"
+    },
+    "host": "management.core.usgovcloudapi.net",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/{subscriptionId}/services/importexport/Locations":{
+            "GET":{
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "ListLocations",
+                "description": "List locations to which you can ship the disks associated with an import or export job. A location is a Microsoft data center region.",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn529104.aspx"
+                },
+                "parameters": [
+                    {
+                        "name": "originlocation",
+                        "in": "query",
+                        "description": "The location for which alternate locations are being queried. If this parameter is not specified, all locations will be returned.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"}                    
+                ],
+                "responses": {
+                    "200": { 
+                        "schema": {
+                            "$ref": "#/definitions/ListLocationsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/{subscriptionId}/services/importexport/StorageAccounts":{
+            "get":{
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "ListAccounts",
+                "description": "List storage accounts for which one or more import or export jobs have been created for a subscription.",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn722417.aspx"
+                },
+                "parameters": [
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"}   
+                ],
+                "responses": {
+                    "200": { 
+                        "schema": {
+                            "$ref": "#/definitions/ListAccountsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/{subscriptionId}/services/importexport/storageaccounts/{StorageAccountName}/jobs":{
+            "get":{
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "ListJobs",
+                "description": "List active and completed jobs for a storage account in a subscription",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn529083.aspx"
+                },
+                "parameters": [
+                    {
+                        "name": "StorageAccountName",
+                        "in": "path",
+                        "description": "The name of the storage account where data will be imported to or exported from.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Indicates whether this is an import job or an export job. ",
+                        "required": false,
+                        "type": "string",
+                        "enum": ["Import", "Export"],
+                        "x-ms-enum": {
+                            "name": "JobType",
+                            "modelAsString": false
+                        }       
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "Specifies that only jobs created at the specified time or later should be returned. ",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "Specifies that only jobs created at the specified time or earlier should be returned.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "states",
+                        "in": "query",
+                        "description": "Optional. Specifies that only jobs whose state matches the specified value should be returned. Valid values are Creating, Shipping, Transferring, Packaging, and Completed. Values are case-sensitive. To specify multiple states, separate values with a comma, without spaces.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "top",
+                        "in": "query",
+                        "description": "An integer value that specifies how many jobs should be returned.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"}   
+                ],
+                "responses": {
+                    "200": { 
+                        "schema": {
+                            "$ref": "#/definitions/ListJobsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                },
+                "x-ms-pageable": { 
+                    "nextLinkName": "next-link" 
+                } 
+            }
+        },
+        "/{subscriptionId}/services/importexport/storageaccounts/{StorageAccountName}/jobs/{jobName}": {
+            "get":{
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "GetJob",
+                "description": "Get information about an existing job from the Windows Azure Import/Export service",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn529088.aspx"
+                },
+                "parameters": [
+                    {
+                        "name": "StorageAccountName",
+                        "in": "path",
+                        "description": "The name of the storage account where data will be imported to or exported from.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobName",
+                        "in": "path",
+                        "description": "The name of the import/export job.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Modified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has been modified since the specified time",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Unmodified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has not been modified since the specified date/time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Match",
+                        "in": "header",
+                        "description": "An ETag value. Specify this header to perform the operation only if the resource's ETag matches the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-None-Match",
+                        "in": "header",
+                        "description": "An ETag value, or the wildcard character (*). Specify this header to perform the operation only if the resource's ETag does not match the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"}   
+                ],
+                "responses": {
+                    "200": { 
+                        "description": "A job is successfully retrieved.",
+                        "schema": {
+                            "$ref": "#/definitions/GetJobResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete":{
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "DeleteJob",
+                "description": "Delete an existing job, purging the related data from the system. Only jobs in the Creating or Completed states can be deleted.",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn529100.aspx"
+                },
+                "parameters": [
+                    {
+                        "name": "StorageAccountName",
+                        "in": "path",
+                        "description": "The name of the storage account where data will be imported to or exported from.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobName",
+                        "in": "path",
+                        "description": "The name of the import/export job.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Modified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has been modified since the specified time",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Unmodified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has not been modified since the specified date/time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Match",
+                        "in": "header",
+                        "description": "An ETag value. Specify this header to perform the operation only if the resource's ETag matches the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-None-Match",
+                        "in": "header",
+                        "description": "An ETag value, or the wildcard character (*). Specify this header to perform the operation only if the resource's ETag does not match the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"}   
+                ],
+                "responses": {
+                    "200": { 
+                        "description": "A job is successfully deleted.",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "PutJob",
+                "description": "Create a new job or updates an existing job in the specified subscription.",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn529105.aspx"
+                },
+                "parameters": [
+                    {
+                        "name": "StorageAccountName",
+                        "in": "path",
+                        "description": "The name of the storage account where data will be imported to or exported from.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobName",
+                        "in": "path",
+                        "description": "The name of the import/export job.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Modified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has been modified since the specified time",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Unmodified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has not been modified since the specified date/time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Match",
+                        "in": "header",
+                        "description": "An ETag value. Specify this header to perform the operation only if the resource's ETag matches the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-None-Match",
+                        "in": "header",
+                        "description": "An ETag value, or the wildcard character (*). Specify this header to perform the operation only if the resource's ETag does not match the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"},
+                    {
+                        "name": "PutJobParameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PutJobParameters"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": { 
+                        "description": "A new job is successfully created.",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                           "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "patch":{
+                "tags": [ 
+                    "StorageImportExport" 
+                ],
+                "operationId": "PatchJob",
+                "description": "Update specific properties of a job. You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center. An Update Job Properties request can also be used to cancel an existing job.",
+                "externalDocs": {
+                    "url": "https://msdn.microsoft.com/en-us/library/dn529110.aspx"
+                },
+                "parameters": [
+                    {
+                        "name": "StorageAccountName",
+                        "in": "path",
+                        "description": "The name of the storage account where data will be imported to or exported from.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobName",
+                        "in": "path",
+                        "description": "The name of the import/export job.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Modified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has been modified since the specified time",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Unmodified-Since",
+                        "in": "header",
+                        "description": "A DateTime value. Specify this header to perform the operation only if the resource has not been modified since the specified date/time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-Match",
+                        "in": "header",
+                        "description": "An ETag value. Specify this header to perform the operation only if the resource's ETag matches the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "If-None-Match",
+                        "in": "header",
+                        "description": "An ETag value, or the wildcard character (*). Specify this header to perform the operation only if the resource's ETag does not match the value specified.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {"$ref": "#/parameters/subscriptionId"},
+                    {"$ref": "#/parameters/Accept-Language"},
+                    {"$ref": "#/parameters/Accept"},
+                    {"$ref": "#/parameters/x-ms-version"},
+                    {
+                        "name": "PatchJobParameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PatchJobParameters"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": { 
+                        "description": "A job is successfully updated.",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "default": {
+                        "description": "An error occurs.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ErrorResponse":{
+            "properties": {
+                "odata.error":{
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "code":{
+                            "type": "string"
+                        },
+                        "message":{
+                            "x-ms-client-flatten": true,
+                            "properties": {
+                                "lang":{
+                                    "type": "string"
+                                },
+                                "value":{
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "azure.values":{
+                            "x-ms-client-flatten": true,
+                            "properties": {
+                                "odata.type":{
+                                    "type": "string"
+                                },
+                                "ExtendedCode":{
+                                    "type": "string"
+                                },
+                                "ExtendedInformation":{
+                                    "type": "string"
+                                }
+                            }
+                        }        
+                    }                    
+                }
+            }
+        },
+        "ListLocationsResponse":{
+            "properties": {
+                "odata.metadata":{
+                    "type": "string"
+                },    
+                "odata.count":{
+                    "type": "string"
+                },
+                "value":{
+                    "type": "array",
+                    "items":{
+                        "properties": {
+                            "odata.id":{
+                                "type": "string"
+                            }, 
+                            "odata.editLink":{
+                                "type": "string"
+                            }, 
+                            "Name":{
+                                "type": "string"
+                            },
+                            "RecipientName":{
+                                "type": "string"
+                            },
+                            "StreetAddress1":{
+                                "type": "string"
+                            },
+                            "StreetAddress2":{
+                                "type": "string"
+                            },
+                            "City":{
+                                "type": "string"
+                            },
+                            "StateOrProvince":{
+                                "type": "string"
+                            },
+                            "PostalCode":{
+                                "type": "string"
+                            },
+                            "CountryOrRegion":{
+                                "type": "string"
+                            },
+                            "SupportedCarriers":{
+                                "type": "array",
+                                "items":{
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }  
+            }
+        },
+        "ListAccountsResponse":{
+            "properties": {
+                "odata.metadata":{
+                    "type": "string"
+                }, 
+                "odata.count":{
+                    "type": "string"
+                },
+                "value":{
+                    "type": "array",
+                    "items":{
+                        "properties": {
+                            "odata.id":{
+                                "type": "string"
+                            }, 
+                            "odata.editLink":{
+                                "type": "string"
+                            }, 
+                            "Name":{
+                                "type": "string"
+                            }
+                        }
+                    }
+                }  
+            }
+        },
+        "ListJobsResponse":{
+            "properties": {
+                "odata.metadata":{
+                    "type": "string"
+                }, 
+                "odata.count":{
+                    "type": "string"
+                },
+                "next-link":{
+                    "type": "string"
+                },
+                "value":{
+                    "type": "array",
+                    "items":{
+                        "properties": {
+                            "odata.id":{
+                                "type": "string"
+                            }, 
+                            "odata.editLink":{
+                                "type": "string"
+                            }, 
+                            "Name":{
+                                "type": "string"
+                            },
+                            "Properties":{
+                                "$ref": "#/definitions/JobProperties"
+                            }
+                        }
+                    }
+                }  
+            }
+        },
+        "GetJobResponse":{
+            "properties": {
+                "odata.metadata":{
+                    "type": "string"
+                }, 
+                "odata.id":{
+                    "type": "string"
+                }, 
+                "odata.editLink":{
+                    "type": "string"
+                }, 
+                "Name":{
+                    "type": "string"
+                },
+                "Properties":{
+                    "$ref": "#/definitions/JobProperties"
+                },
+                "DriveList":{
+                    "$ref": "#/definitions/DriveList"
+                },
+                "Export":{
+                    "$ref": "#/definitions/Export"
+                }
+            }
+        },
+        "JobProperties": {
+            "properties": {
+                "Location":{
+                    "type": "string"
+                },
+                "Type":{
+                    "type": "string",
+                    "enum": ["Import", "Export"],
+                    "description": "Indicates whether this is an import job or an export job. ",
+                    "x-ms-enum": {
+                        "name": "JobType",
+                        "modelAsString": false
+                    }                
+                },
+                "FriendlyName":{
+                    "type": "string"
+                },
+                "Description":{
+                    "type": "string"
+                },
+                "Metadata":{
+                    "type": "string"
+                },
+                "State":{
+                    "type": "string"
+                },
+                "CancelRequested":{
+                    "type": "boolean"
+                },
+                "PercentComplete":{
+                    "type": "integer"
+                },
+                "ReturnAddress":{
+                    "$ref": "#/definitions/ReturnAddress"
+                },
+                "ReturnShipping":{
+                    "$ref": "#/definitions/ReturnShipping"
+                },
+                "ShippingInformation":{
+                    "$ref": "#/definitions/ShippingInformation"
+                },
+                "DeliveryPackage":{
+                    "$ref": "#/definitions/PackageInfomation"
+                },
+                "ReturnPackage":{
+                    "$ref": "#/definitions/PackageInfomation"
+                },
+                "ImportExportStatesPath":{
+                    "type": "string"
+                },
+                "EnableVerboseLog":{
+                    "type": "boolean"
+                },
+                "BackupDriveManifest":{
+                    "type": "boolean"
+                },
+                "IncompleteBlobListUri":{
+                    "type": "string"
+                },
+                "VerboseLogUri":{
+                    "type": "string"
+                },
+                "ErrorLogUri":{
+                    "type": "string"
+                },
+                "ManifestUri":{
+                    "type": "string"
+                }
+            }
+        },
+        "PutJobParameters":{
+            "required": [
+                "Name",
+                "properties"
+            ],
+            "properties": {
+                "Name":{
+                    "type": "string"
+                },
+                "Properties": {
+                    "$ref": "#/definitions/PutJobProperties"
+                },
+                "DriveList":{
+                    "$ref": "#/definitions/DriveList"
+                },
+                "Export":{
+                    "$ref": "#/definitions/Export"
+                }
+            }
+        },
+        "PutJobProperties":{
+            "required": [
+                "StorageAccountName",
+                "Location",
+                "Type"
+            ],
+            "properties": {
+                "Location":{
+                    "type": "string"
+                },
+                "StorageAccountName":{
+                    "type": "string",
+                    "description": "The storage account name."
+                },                
+                "StorageAccountKey":{
+                    "type": "string",
+                    "description": "The storage account key. One of StorageAccountKey or ContainerSas must be included."
+                },
+                "ContainerSas":{
+                    "type": "string",
+                    "description": "The container SAS to be used to import or export data to or from the storage account. One of StorageAccountKey or ContainerSas must be included."
+                },
+                "Type":{
+                    "type": "string",
+                    "enum": ["Import", "Export"],
+                    "description": "Indicates whether this is an import job or an export job. ",
+                    "x-ms-enum": {
+                        "name": "JobType",
+                        "modelAsString": false
+                    }
+                },
+                "FriendlyName":{
+                    "type": "string",
+                    "description": "A human-readable name for the job. May contain Unicode characters and spaces."
+                },
+                "Description":{
+                    "type": "string",
+                    "description": "A human-readable description of the job. The description may be up to 1024 characters."
+                },
+                "Metadata":{
+                    "type": "string",
+                    "description": "Metadata associated with the job. The metadata may be up to 1024 characters."
+                },
+                "ReturnAddress":{
+                    "$ref": "#/definitions/ReturnAddress"
+                },
+                "ReturnShipping":{
+                    "$ref": "#/definitions/ReturnShipping"
+                },
+                "ImportExportStatesPath":{
+                    "type": "string",
+                    "description": "The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored."
+                },
+                "EnableVerboseLog":{
+                    "type": "boolean",
+                    "description": "Indicates whether verbose logging will be enabled."
+                },
+                "BackupDriveManifest":{
+                    "type": "boolean",
+                    "description": "Indicates whether the manifest files on the drives should be copied to block blobs."
+                }
+            },
+            "description": "Specifies the properties of the job."
+        },
+        "PatchJobParameters":{
+            "properties": {
+                "Properties": {
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "FriendlyName":{
+                            "type": "string",
+                            "description": "A human-readable name for the job. May contain Unicode characters and spaces."
+                        },
+                        "Description":{
+                            "type": "string",
+                            "description": "A human-readable description of the job. The description may be up to 1024 characters."
+                        },
+                        "Metadata":{
+                            "type": "string",
+                            "description": "Metadata associated with the job. The metadata may be up to 1024 characters."
+                        },
+                        "CancelRequested":{
+                            "type": "boolean",
+                            "description": "If specified, the value must be true. The service will attempt to cancel the job. "
+                        },
+                        "State":{
+                            "type": "string",
+                            "description": "If specified, the value must be Shipping, which tells the Import/Export service that the package for the job has been shipped. The ReturnAddress and DeliveryPackage properties must have been set either in this request or in a previous request, otherwise the request will fail. "
+                        },
+                        "ReturnAddress":{
+                            "$ref": "#/definitions/ReturnAddress"
+                        },
+                        "ReturnShipping":{
+                            "$ref": "#/definitions/ReturnShipping"
+                        },
+                        "DeliveryPackage":{
+                            "$ref": "#/definitions/PackageInfomation"
+                        },
+                        "EnableVerboseLog":{
+                            "type": "boolean",
+                            "description": "Indicates whether verbose logging will be enabled."
+                        },
+                        "BackupDriveManifest":{
+                            "type": "boolean",
+                            "description": "Indicates whether the manifest files on the drives should be copied to block blobs."
+                        }
+                    },
+                    "description": "Specifies the properties of the job."
+                }
+            }
+        },
+        "ReturnAddress": {
+            "description": "Specifies the return address information for the job.",
+            "required": [
+                "Name",
+                "Address",
+                "Phone",
+                "Email"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "description": "The name of the recipient who will receive the hard drives when they are returned."
+                },
+                "Address": {
+                    "type": "string",
+                    "description": "Address of the recipient of the returned drives."
+                },
+                "Phone": {
+                    "type": "string",
+                    "description": "Phone number of the recipient of the returned drives."
+                },
+                "Email": {
+                    "type": "string",
+                    "description": "Email address of the recipient of the returned drives."
+                }
+            }
+        },
+        "ReturnShipping":{
+            "description": "Specifies the return carrier and customer’s account with the carrier.",
+            "required": [
+                "CarrierName",
+                "CarrierAccountNumber"
+            ],
+            "properties": {
+                "CarrierName": {
+                    "type": "string",
+                    "description": "The carrier’s name."
+                },
+                "CarrierAccountNumber": {
+                    "type": "string",
+                    "description": "The customer’s account number with the carrier."
+                }
+            }
+        },
+        "ShippingInformation":{
+            "description": "Contains information about the Microsoft datacenter to which the drives should be shipped.",
+            "required": [
+                "Name",
+                "Address"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "description": "The name of the recipient at the datacenter."
+                },
+                "Address": {
+                    "type": "string",
+                    "description": "The address of the datacenter."
+                }
+            }
+        },
+        "PackageInfomation":{
+            "description": "Contains information about the package being shipped by the customer to the Microsoft data center.",
+            "required": [
+                "CarrierName",
+                "TrackingNumber",
+                "DriveCount",
+                "ShipDate"
+            ],
+            "properties": {
+                "CarrierName": {
+                    "type": "string",
+                    "description": "The name of the carrier that is used to ship the import or export drives."
+                },
+                "TrackingNumber": {
+                    "type": "string",
+                    "description": "The tracking number of the package."
+                },
+                "DriveCount": {
+                    "type": "integer",
+                    "description": "The number of drives included in the package."
+                },
+                "ShipDate": {
+                    "type": "string",
+                    "description": "The date when the package is shipped."
+                }
+            }
+        },
+        "DriveList":{
+            "description": "List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.",
+            "type": "array", 
+            "items": { 
+                "$ref": "#/definitions/Drive",
+                "minimum": 0,
+                "maximum": 10
+            }
+        },
+        "Drive":{
+            "required": [
+                "DriveId",
+                "BitLockerKey",
+                "ManifestFile",
+                "ManifestHash"
+            ],
+            "properties": {
+                "DriveId": {
+                    "type": "string",
+                    "description": "The drive's hardware serial number, without spaces."
+                },
+                "BitLockerKey": {
+                    "type": "string",
+                    "description": "The BitLocker key used to encrypt the drive."
+                },
+                "ManifestFile": {
+                    "type": "string",
+                    "description": "The relative path of the manifest file on the drive. "
+                },
+                "ManifestHash": {
+                    "type": "string",
+                    "description": "The Base16-encoded MD5 hash of the manifest file on the drive."
+                }
+            }
+        },
+        "Export": {
+            "description": "A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.",
+            "properties":{
+                "BlobList":{
+                    "$ref": "#/definitions/BlobList"
+                },
+                "BlobListBlobPath":{
+                    "type": "string",
+                    "description": "The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root."
+                }
+            }
+        },       
+        "BlobList":{
+            "description": "A list of the blobs to be exported.The size of the data provided for this property must not exceed 32KB. If it is larger than 32KB, store the information as a blob in the storage account associated with the export job, and specify the BlobListBlobPath property to point to this blob.",
+            "properties": { 
+                "BlobPath": {
+                    "type": "array", 
+                    "items": { 
+                        "type": "string",
+                        "description":"The relative URI to the blob, beginning with the container name. If the blob is in root container, you must explicitly specify $root in the path."
+                    }
+                },
+                "BlobPathPrefix":{
+                    "type": "array", 
+                    "items": { 
+                        "type": "string",
+                        "description":"A blob path prefix that specifies all blobs whose relative path begins with that prefix. The prefix must begin with a forward slash and must include the container name. If the container is the root container, you must explicitly specify $root in the path."
+                    }
+                }
+            },
+            "maxLength": 32768
+        }
+    },
+    "parameters":{
+        "subscriptionId": {
+            "name": "subscriptionId",
+            "in": "path",
+            "description": "The subscription ID for the Azure user.",
+            "required": true,
+            "type": "string"
+        },
+        "Accept-Language":{
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specifies the preferred language for the response.",
+            "required": true,
+            "type": "string",
+            "enum": ["en-us"]
+        },
+        "Accept":{
+            "name": "Accept",
+            "in": "header",
+            "description": " If specified, it must be application/json (which specifies the JSON Light format). Other values will result in response code 406 (Not Acceptable).",
+            "required": true,
+            "type": "string",
+            "enum": ["application/json"]
+        },
+        "x-ms-version":{
+            "name": "x-ms-version",
+            "in": "header",
+            "description": "Specifies the service management version to use for this request",
+            "required": true,
+            "type": "string",
+            "enum": ["2014-11-01"]
+        }        
+    }
+}

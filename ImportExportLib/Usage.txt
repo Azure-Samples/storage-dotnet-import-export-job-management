@@ -1,0 +1,5 @@
+Generate rest Api lib:
+    cd RestApiClientSample
+    ..\packages\autorest.0.16.0\tools\AutoRest.exe -Namespace StorageImportExport -input ..\importexport.json -CodeGenerator CSharp
+Generated code can be found at RestApiClientSample\Generated
+

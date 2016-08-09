@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ImportExportJobSettings> 
+  <JobProperty>
+    <BackupDriveManifest>true</BackupDriveManifest>
+    <Description>test job</Description>
+    <EnableVerboseLog>true</EnableVerboseLog>
+    <FriendlyName>test</FriendlyName>
+    <JobType>Export</JobType>
+    <Location>USGov Virginia</Location>
+    <StorageAccountName>storageaccountname</StorageAccountName>
+    <!-- Must include either StorageAccountKey or ContainerSas in the request-->
+    <StorageAccountKey></StorageAccountKey>
+    <ContainerSas></ContainerSas>
+    <ImportExportStatesPath>waimportexport</ImportExportStatesPath>
+  </JobProperty>
+  <ReturnAddress>
+    <Name>John Smith</Name>
+    <Email>john@example.com</Email>
+    <Address>One Microsoft Way, Redmond, WA 98052</Address>
+    <Phone>123-456-7890</Phone>    
+  </ReturnAddress>
+  <ReturnShipping>
+    <CarrierName>FedEx</CarrierName>
+    <CarrierAccountNumber>123456789</CarrierAccountNumber>  
+  </ReturnShipping>
+  <BlobList>
+    <Blob BlobPaths="" BlobPathPrefixes="/export/"/>
+  </BlobList>
+</ImportExportJobSettings>

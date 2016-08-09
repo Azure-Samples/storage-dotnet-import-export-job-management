@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ImportExportJobSettings> 
+  <JobProperty>
+    <BackupDriveManifest>true</BackupDriveManifest>
+    <Description>test job</Description>
+    <EnableVerboseLog>true</EnableVerboseLog>
+    <FriendlyName>test</FriendlyName>
+    <JobType>Import</JobType>
+    <Location>USGov Virginia</Location>
+    <StorageAccountName>storageaccountname</StorageAccountName>
+    <!-- Must include either StorageAccountKey or ContainerSas in the request-->
+    <StorageAccountKey></StorageAccountKey>
+    <ContainerSas></ContainerSas>
+    <ImportExportStatesPath>waimportexport</ImportExportStatesPath>
+  </JobProperty>
+  <ReturnAddress>
+    <Name>John Smith</Name>
+    <Email>john@example.com</Email>
+    <Address>One Microsoft Way, Redmond, WA 98052</Address>
+    <Phone>123-456-7890</Phone>    
+  </ReturnAddress>
+  <ReturnShipping>
+    <CarrierName>FedEx</CarrierName>
+    <CarrierAccountNumber>123456789</CarrierAccountNumber>  
+  </ReturnShipping>
+  <DriveList>
+    <Drive>
+      <DriveId>WMAT-V8299238</DriveId>
+      <BitLockerKey>295888-146773-434511-382459-355014-589787-673035-684222</BitLockerKey>
+      <ManifestFile>\DriveManifest.xml</ManifestFile>
+      <ManifestHash>C7C6A434026889CC5522D5C3DBADC24A</ManifestHash>
+    </Drive>
+  </DriveList>
+</ImportExportJobSettings>
