@@ -10,6 +10,3 @@ C:\rd_root\rd_importexport_n\root\services\importexport\XTransport\Client\RestAp
 C:\rd_root\rd_importexport_n\root\services\importexport\XTransport\Client\RestApiClient\RestApiClientSample\obj\Debug\RestApiClientSample.csprojResolveAssemblyReference.cache
 C:\rd_root\rd_importexport_n\root\services\importexport\XTransport\Client\RestApiClient\RestApiClientSample\obj\Debug\RestApiClientSample.exe
 C:\rd_root\rd_importexport_n\root\services\importexport\XTransport\Client\RestApiClient\RestApiClientSample\obj\Debug\RestApiClientSample.pdb
-C:\Users\renash\Desktop\storage-dotnet-import-export-job-management\ImportExportLib\RestApiClientSample\bin\Debug\RestApiClientSample.exe.config
-C:\Users\renash\Desktop\storage-dotnet-import-export-job-management\ImportExportLib\RestApiClientSample\obj\Debug\RestApiClientSample.exe
-C:\Users\renash\Desktop\storage-dotnet-import-export-job-management\ImportExportLib\RestApiClientSample\obj\Debug\RestApiClientSample.pdb
