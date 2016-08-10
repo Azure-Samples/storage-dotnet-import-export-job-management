@@ -25,21 +25,21 @@ namespace StorageImportExport
                 var client = new StorageImportExportClient("<azure subscription id>", clientCert);
 
                 // create a sample export job
-                client.CreateJob("myjobname20160803export", "config\\TemplateExportConfig.xml");
+                client.CreateJob("<myexportjoname>", "config\\TemplateExportConfig.xml");
 
                 // create a sample import job
-                client.CreateJob("myjobname20160803import", "config\\TemplateImportConfig.xml");
+                client.CreateJob("<myimportjobname>", "config\\TemplateImportConfig.xml");
 
                 // list all jobs in the storage account
-                var jobList = client.ListJobs("storageaccountname");
-                jobList = client.ListJobs("storageaccountname", JobType.Import);
+                var jobList = client.ListJobs("<mystorageaccountname>");
+                jobList = client.ListJobs("<mystorageaccountname>", JobType.Import);
 
                 // ship the sample import job
-                var package = new PackageInfomation("FedEx", "0123456789", 1, "2016/08/01");
-                client.ShipJob("storageaccountname", "myjobname20160803import", package);
+                var package = new PackageInfomation("<carrier name>", "<tracking number>", <drive id>, "<ship date yyyy/mm/dd");
+                client.ShipJob("<storage account name>", "<jobname import>", package);
 
                 // get the sample import job and read its job state
-                var jobItem = client.GetJob("storageaccountname", "myjobname20160803import");
+                var jobItem = client.GetJob("<storage accountname>", "<jobname import>");
                 Console.WriteLine("{0}: {1}", jobItem.Name, jobItem.Properties.State);
             }
             catch (ErrorResponseException e)
