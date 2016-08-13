@@ -25,7 +25,7 @@ This sample also includes Swagger Definition located at [ImportExportLib\RestApi
 
 
 	    <Location>{your azure storage location name}</Location>
-	    <StorageAccountName>{your storage account name}</StorageAccountName>
+	      <StorageAccountName>{your storage account name}</StorageAccountName>
 	    <StorageAccountKey>{your storage account key}</StorageAccountKey>
   	      <ReturnAddress>
     	        <Name>{contact person name}</Name>
@@ -35,12 +35,12 @@ This sample also includes Swagger Definition located at [ImportExportLib\RestApi
           </ReturnAddress>
           <ReturnShipping>
               <CarrierName>{carrier name like Fedex, DHL}</CarrierName>
-              <CarrierAccountNumber>{account number for return shipping}</CarrierAccountNumber>
+    	        <CarrierAccountNumber>{account number for return shipping}</CarrierAccountNumber>
           </ReturnShipping>
           <BlobList>
               <Blob BlobPaths="" BlobPathPrefixes="/export/"/>
           </BlobList>
-
+          
 In addition following are fields for an Import job from your journal file.
 
 	    <DriveList>
