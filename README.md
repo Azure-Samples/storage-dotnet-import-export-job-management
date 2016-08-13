@@ -21,23 +21,23 @@ This sample also includes Swagger Definition located at [ImportExportLib\RestApi
 ## Running this sample
 
 1. Download the solution and open the RestAPISample.sln in Visual Studio.
-2. Open TemplateExportConfig.xml or TemplateImportConfig.xml and set the following values:
+2. Open TemplateExportConfig.xml or TemplateImportConfig.xml and set the following values
 	    <Location>{your azure storage location name}</Location>
 	    <StorageAccountName>{your storage account name}</StorageAccountName>
-	    <StorageAccountKey>{your storage account key}</StorageAccountKey>
-	    <ReturnAddress>
-	        <Name>{contact person name}</Name>
-	        <Email>{contact email}</Email>
-	        <Address>{contact postal address}</Address>
-	        <Phone>{contact number}</Phone>
-	    </ReturnAddress>
-	    <ReturnShipping>
-	        <CarrierName>{carrier name like Fedex, DHL}</CarrierName>
-	        <CarrierAccountNumber>{account number for return shipping}</CarrierAccountNumber>
-	    </ReturnShipping>
-	    <BlobList>
-	        <Blob BlobPaths="" BlobPathPrefixes="/export/"/>
-	    </BlobList>
+	      <StorageAccountKey>{your storage account key}</StorageAccountKey>
+  	      <ReturnAddress>
+    	        <Name>{contact person name}</Name>
+      	      <Email>{contact email}</Email>
+        	    <Address>{contact postal address}</Address>
+          	  <Phone>{contact number}</Phone>
+          </ReturnAddress>
+          <ReturnShipping>
+              <CarrierName>{carrier name like Fedex, DHL}</CarrierName>
+              <CarrierAccountNumber>{account number for return shipping}</CarrierAccountNumber>
+          </ReturnShipping>
+          <BlobList>
+              <Blob BlobPaths="" BlobPathPrefixes="/export/"/>
+          </BlobList>
 
 In addition following are fields for an Import job from your journal file.
 
