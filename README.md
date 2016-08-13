@@ -22,6 +22,8 @@ This sample also includes Swagger Definition located at [ImportExportLib\RestApi
 
 1. Download the solution and open the RestAPISample.sln in Visual Studio.
 2. Open TemplateExportConfig.xml or TemplateImportConfig.xml and set the following values
+
+
 	    <Location>{your azure storage location name}</Location>
 	    <StorageAccountName>{your storage account name}</StorageAccountName>
 	    <StorageAccountKey>{your storage account key}</StorageAccountKey>
