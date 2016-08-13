@@ -24,7 +24,7 @@ This sample also includes Swagger Definition located at [ImportExportLib\RestApi
 2. Open TemplateExportConfig.xml or TemplateImportConfig.xml and set the following values
 	    <Location>{your azure storage location name}</Location>
 	    <StorageAccountName>{your storage account name}</StorageAccountName>
-	      <StorageAccountKey>{your storage account key}</StorageAccountKey>
+	    <StorageAccountKey>{your storage account key}</StorageAccountKey>
   	      <ReturnAddress>
     	        <Name>{contact person name}</Name>
       	      <Email>{contact email}</Email>
