@@ -53,15 +53,19 @@ In addition following are fields for an Import job from your journal file.
 	    </DriveList>
 
 3. Update managemnt certificate thumbprint the value in Program.cs
+
 	     var clientCertificateThumbprint = "<client certificate thumbprint>";
 
 4. Update the subscription id
+
   	     var client = new StorageImportExportClient("<azure subscription id>", clientCert);
 
 5. Update name of the import or export job. This could be any string value to identify your job.
+
   	     client.CreateJob("<myjoname>"...
 
 6. Update  storage account name and job name you wish to vies
+
   	     var jobItem = client.GetJob("<storage accountname>", "<jobname import>");
 
 4. Set breakpoints and run the project using F10.
