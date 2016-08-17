@@ -75,5 +75,5 @@ In addition following are fields for an Import job from your journal file.
 - [Azure Import/Export REST API Reference](https://msdn.microsoft.com/en-us/library/dn529096.aspx)
 - [How to use Import/Export Tool?](https://msdn.microsoft.com/en-us/library/dn529093.aspx)
 - [Management Certificate](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/)
--[AutoREST](https://github.com/Azure/autorest/blob/master/README.md)
+- [AutoREST](https://github.com/Azure/autorest/blob/master/README.md)
 - [Open API Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/README.md)
