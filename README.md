@@ -80,7 +80,7 @@ In addition following are fields for an Import job from your journal file.
 
   	     client.CreateJob("<myjoname>"...
 
-6. Update  storage account name and job name you wish to vies
+6. Update  storage account name and job name you wish to view
 
   	     var jobItem = client.GetJob("<storage accountname>", "<jobname import>");
 
