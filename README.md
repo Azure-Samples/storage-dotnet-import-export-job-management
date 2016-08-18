@@ -16,7 +16,7 @@ This sample only provides the C# version of Swagger-Based generated code. In thi
 1. Access to subscription and classic storage account.
 2. Access to Management certificate of the subscription in which this storage account lives.
 3. Management certificate installed on local machine. If you don't know about management certificates, [here](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/) is the guide.
-3. Journal file generated when running [Import Export client tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)
+3. Journal file generated when running Import Export client tool.
 
 ## How to get started with Import Job
 1.	[Create a storage account](https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account-classic-portal/#create-a-storage-account).
