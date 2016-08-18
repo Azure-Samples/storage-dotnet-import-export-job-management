@@ -19,21 +19,21 @@ This sample also includes Swagger Definition located at [ImportExportLib\RestApi
 3. Journal file generated when running [Import Export client tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)
 
 ## How to get started with Import Job
-1.	Create a storage account.
-2.	Procure the disk and adapter.
-3.	Download the client tool.
-4.	Prepare the disk.
-5.	Create a job using REST API.
-6.	Ship disks to Azure datacenter.
-7.	Track your job using REST API.
+1.	[Create a storage account](https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account-classic-portal/#create-a-storage-account).
+2.	[Procure the disk and adapter](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/#pre-requisites).
+3.	[Download the client tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409).
+4.	[Prepare the disk](https://msdn.microsoft.com/library/dn529089.aspx).
+5.	Create a job using REST API using this sample.
+6.	Ship disks to Azure datacenter using address obtained using `GetLocation` API.
+7.	Track your job using REST API using this sample.
 
 ## How to get started with Export Job
-1.	Procure a disk.
-2.	Create a job using REST API to specify the data you intend to export.
-3.	Ship disks to Azure datacenter.
-4.	Track your job using REST API.
-5.	Retrieve the Bitlocker key using REST API.
-6.	Retrieve your data using this key when the disk arrives back to you.
+1.	[Procure a disk](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/#pre-requisites).
+2.	Create a job using REST API to specify the data you intend to export using this sample.
+3.	Ship disks to Azure datacenterusing address obtained using `GetLocation` API.
+4.	Track your job using REST API using this sample.
+5.	Retrieve the Bitlocker key using `GetJob` REST API using this sample.
+6.	Ulock your drive and retrieve your data using this key when the disk arrives back to you.
 
 ## Running this sample
 
@@ -89,7 +89,7 @@ In addition following are fields for an Import job from your journal file.
 
 ## More information
 - [What is Azure Import Export?](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/)
-- [Azure Import/Export REST API Reference](https://msdn.microsoft.com/en-us/library/dn529096.aspx)
+- [Azure Import/Export REST API Reference](https://msdn.microsoft.com/en-us/library/dn529087.aspx)
 - [How to use Import/Export Tool?](https://msdn.microsoft.com/en-us/library/dn529093.aspx)
 - [Management Certificate](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/)
 - [AutoREST](https://github.com/Azure/autorest/blob/master/README.md)
