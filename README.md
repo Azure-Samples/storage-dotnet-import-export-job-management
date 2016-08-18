@@ -6,7 +6,7 @@ author: renash
 
 # Getting Started with Azure Import Export in .NET
 
-One can create an Import Export job in their target classic storage account using the Classic portal or the [Import/Export REST API](https://msdn.microsoft.com/en-us/library/dn529096.aspx). This sample demonstrates how to create and manage your Import Export job using client library. This sample only works against classic storage accounts.
+One can create an [Import Export](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/) job in their target classic storage account using the Classic portal or the [Import/Export REST API](https://msdn.microsoft.com/en-us/library/dn529096.aspx). This sample demonstrates how to create and manage your Import Export job using client library. This sample only works against classic storage accounts.
 
 This is [Swagger-based](https://github.com/OAI/OpenAPI-Specification/blob/master/README.md) generated code using [AutoREST](https://github.com/Azure/autorest/blob/master/README.md) where `StorageImportExportClient` is a wrapper over the existing REST API in Open specification format. This will enable you to generate code for different languages like Ruby, CSharp, NodeJS, Java and Python.
 
