@@ -4,7 +4,7 @@ platforms: dotnet
 author: renash
 ---
 
-# Getting Started with Azure Import Export in .NET
+# Import Export Job Management through REST API
 
 This sample demonstrates how to create and manage your [Import Export](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/) job using REST API. This sample only works against classic storage accounts. One can create an Import Export job in their target classic storage account using the Classic portal or the [Import/Export REST API](https://msdn.microsoft.com/en-us/library/dn529096.aspx). We will use the latter to create our job in this sample 
 
