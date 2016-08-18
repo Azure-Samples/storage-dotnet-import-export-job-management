@@ -68,7 +68,7 @@ In addition following are fields for an Import job from your journal file.
 	      </Drive>
 	    </DriveList>
 
-3. Update managemnt certificate thumbprint the value in Program.cs
+3. Update managemnt certificate thumbprint the value in Program.cs. If you don't know about management certificates, [here](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/) is the guide.
 
 	     var clientCertificateThumbprint = "<client certificate thumbprint>";
 
