@@ -8,9 +8,9 @@ author: renash
 
 One can create an [Import Export](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/) job in their target classic storage account using the Classic portal or the [Import/Export REST API](https://msdn.microsoft.com/en-us/library/dn529096.aspx). This sample demonstrates how to create and manage your Import Export job using client library. This sample only works against classic storage accounts.
 
-This sample contains [Swagger](https://github.com/OAI/OpenAPI-Specification/blob/master/README.md) templates which will enable you to generate REST-API models for different languages like Ruby, CSharp, NodeJS, Java and Python using [AutoREST](https://github.com/Azure/autorest/blob/master/README.md). This is the C# version of Swagger-Based generated code. In this sample `StorageImportExportClient` is a wrapper over the existing REST API in Open specification format. 
+This sample contains Import Export REST-API [Swagger](https://github.com/OAI/OpenAPI-Specification/blob/master/README.md) definitions which will enable you to generate Import Export models for different languages like Ruby, CSharp, NodeJS, Java and Python using [AutoREST](https://github.com/Azure/autorest/blob/master/README.md). The Swagger definition is located at [ImportExportLib\RestApiClientSample\importexport.json](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/ImportExportLib/importexport.json)
 
-This sample also includes Swagger Definition located at [ImportExportLib\RestApiClientSample\importexport.json](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/ImportExportLib/importexport.json)
+This sample only provides the C# version of Swagger-Based generated code. In this sample `StorageImportExportClient` is a wrapper over the existing REST API in Open specification format.
 
 ## Pre Requisite
 1. Access to subscription and classic storage account.
