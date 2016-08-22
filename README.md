@@ -72,7 +72,7 @@ In addition following are fields for an Import job from your journal file.
 3. Update the endpoint in **storageimportexportlib.cs**.
 It will be https://management.core.windows.net for public Azure and https://management.core.usgovcloudapi.net for US Gov Cloud
 
-	     this.BaseUri = new Uri("https://management.core.windows.net");
+	     this.BaseUri = new Uri("<management end-point>");
 
 4. Update managemnt certificate thumbprint the value in **Program.cs**. If you don't know about management certificates, [here](https://azure.microsoft.com/en-us/documentation/articles/azure-api-management-certs/) is the guide.
 
