@@ -15,7 +15,8 @@ This sample only provides the C# version of Swagger-Based generated code. In thi
 ## Pre Requisite
 1. Access to subscription and classic storage account.
 2. Access to Management certificate of the subscription in which this storage account lives.
-3. Management certificate installed on local machine. If you don't know about management certificates, [here](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/) is the guide.
+3. [Create a new self-signed certificate] (https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/#create-a-new-self-signed-certificate).
+4. [Upload the certificate](https://azure.microsoft.com/en-us/documentation/articles/azure-api-management-certs/)
 
 ## How to get started with Import Job
 1.	[Create a storage account](https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account-classic-portal/#create-a-storage-account).
