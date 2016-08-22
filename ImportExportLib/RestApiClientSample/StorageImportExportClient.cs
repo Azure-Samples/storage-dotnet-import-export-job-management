@@ -150,6 +150,15 @@ namespace StorageImportExport
             return jobList.Value;
         }
 
-
+        /// <summary>
+        /// List locations which you can ship the disks associated with an import or export job. A location is a Microsoft data center region.
+        /// </summary>
+        /// <param name="originlocation">The location for which alternate locations are being queried. If this parameter is not specified, all locations will be returned.</param>
+        /// <returns></returns>
+        public IList<ListLocationsResponseValueItem> ListLocations(string originlocation = null)
+        {
+            var locationList = client.ListLocations(originlocation);
+            return locationList.Value;
+        }
     }
 }
