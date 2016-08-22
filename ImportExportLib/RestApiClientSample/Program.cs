@@ -29,6 +29,9 @@ namespace StorageImportExport
 
                 // create a sample import job
                 client.CreateJob("<myimportjobname>", "config\\TemplateImportConfig.xml");
+                
+                // return a list of locations to which you can ship the disks
+                var locations = client.ListLocations();
 
                 // list all jobs in the storage account
                 var jobList = client.ListJobs("<mystorageaccountname>");
