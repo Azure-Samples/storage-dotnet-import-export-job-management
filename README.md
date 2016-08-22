@@ -37,8 +37,8 @@ This sample only provides the C# version of Swagger-Based generated code. In thi
 
 ## Running this sample
 
-1. Download the solution and open the RestAPISample.sln in Visual Studio.
-2. Open TemplateExportConfig.xml or TemplateImportConfig.xml and set the following values
+1. Download the solution and open the **RestAPISample.sln** in Visual Studio.
+2. Open **TemplateExportConfig.xml** or **TemplateImportConfig.xml** and set the following values
 
 
 	    <Location>{your azure storage location name}</Location>
@@ -69,23 +69,28 @@ In addition following are fields for an Import job from your journal file.
 	      </Drive>
 	    </DriveList>
 
-3. Update managemnt certificate thumbprint the value in Program.cs. If you don't know about management certificates, [here](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-certs-create/) is the guide.
+3. Update the endpoint in **storageimportexportlib.cs**.
+It will be https://management.core.windows.net for public Azure and https://management.core.usgovcloudapi.net for US Gov Cloud
+
+	     this.BaseUri = new Uri("https://management.core.windows.net");
+
+4. Update managemnt certificate thumbprint the value in **Program.cs**. If you don't know about management certificates, [here](https://azure.microsoft.com/en-us/documentation/articles/azure-api-management-certs/) is the guide.
 
 	     var clientCertificateThumbprint = "<client certificate thumbprint>";
 
-4. Update the subscription id
+5. Update the Azure subscription id
 
   	     var client = new StorageImportExportClient("<azure subscription id>", clientCert);
 
-5. Update name of the import or export job. This could be any string value to identify your job.
+6. Update name of the import or export job. This could be any string value to identify your job.
 
   	     client.CreateJob("<myjoname>"...
 
-6. Update  storage account name and job name you wish to view
+7. Update  storage account name and job name you wish to view
 
   	     var jobItem = client.GetJob("<storage accountname>", "<jobname import>");
 
-4. Set breakpoints and run the project using F10.
+8. Set breakpoints and run the project using F10.
 
 ## More information
 - [What is Azure Import Export?](https://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/)
