@@ -1,7 +1,7 @@
 ---
 services: storage
 platforms: dotnet
-author: renash
+author: RenaShahMSFT
 ---
 
 # Import Export Job Management through REST API
