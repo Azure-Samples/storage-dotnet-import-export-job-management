@@ -1,5 +1,5 @@
 ---
-services: storage -import-export
+services: storage
 platforms: dotnet
 author: renash
 ---
