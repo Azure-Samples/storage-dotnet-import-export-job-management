@@ -1,5 +1,5 @@
 ---
-services: azure-storage -import-export
+services: storage -import-export
 platforms: dotnet
 author: renash
 ---
