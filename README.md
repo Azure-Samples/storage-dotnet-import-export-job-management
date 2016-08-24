@@ -33,7 +33,7 @@ This sample only provides the C# version of Swagger-Based generated code. In thi
 3.	Ship disks to Azure datacenterusing address obtained using `GetLocation` API.
 4.	Track your job using REST API using this sample.
 5.	Retrieve the Bitlocker key using `GetJob` REST API using this sample.
-6.	Ulock your drive and retrieve your data using this key when the disk arrives back to you.
+6.	Unlock your drive and retrieve your data using this key when the disk arrives back to you.
 
 ## Running this sample
 
