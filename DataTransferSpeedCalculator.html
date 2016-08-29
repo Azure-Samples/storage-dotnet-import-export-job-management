@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<script language="JavaScript1.2" type="text/JavaScript"><!--
+/* 
+Copyright 2004-2011 T1 Shopper, Inc.    
+Go learn to write your own JavaScript, don't copy ours!!
+December 2010 - Credit to Jim "ahomeandoffice" who caught a rounding instead of flooring issue.
+January 2004 - original release
+*/
+function calc(){
+    if (stripAlphaChars(document.ftt.fileunits.value) != "" && document.ftt.transferunits.value != "") {
+        var seconds         = (stripAlphaChars(document.ftt.filesize.value)*document.ftt.fileunits.value)/document.ftt.transferunits.value;
+        if (seconds < 60) {         
+            var seconds_float   = round(seconds,2);
+            document.ftt.outputstuff.value = seconds_float + secondsToText(seconds_float);
+            return true;
+        } 
+        if (seconds < 3600) {
+            var minutes_int   = Math.floor(secondsToMinutes(seconds)); ;
+            var seconds_float = seconds -minutesToSeconds(minutes_int);
+            var seconds_float = round(seconds_float,2);
+            document.ftt.outputstuff.value = minutes_int + minutesToText(minutes_int) + seconds_float + secondsToText(seconds_float);
+            return true;
+        } 
+        if (seconds < 86400) {
+            var hours_int           = Math.floor(secondsToHours(seconds));
+            var minutes_int         = Math.floor(secondsToMinutes(seconds - hoursToSeconds(hours_int)));
+            var seconds_float       = seconds -minutesToSeconds(minutes_int) -hoursToSeconds(hours_int);
+            var seconds_float       = round(seconds_float,2);                     
+            document.ftt.outputstuff.value = hours_int + hoursToText(hours_int) + minutes_int + minutesToText(minutes_int) + seconds_float + secondsToText(seconds_float);
+            return true;
+        } 
+        if (seconds >= 86400) {
+            var days_int            = Math.floor(secondsToDays(seconds));
+            var hours_int           = Math.floor(secondsToHours(seconds -daysToSeconds(days_int)));
+            var minutes_int         = Math.floor(secondsToMinutes(seconds -hoursToSeconds(hours_int) -daysToSeconds(days_int)));
+            var seconds_float       = seconds -minutesToSeconds(minutes_int) -hoursToSeconds(hours_int) -daysToSeconds(days_int);
+            var seconds_float       = round(seconds_float,2);                     
+            document.ftt.outputstuff.value = days_int + daysToText(days_int) + hours_int + hoursToText(hours_int) + minutes_int + minutesToText(minutes_int) + seconds_float + secondsToText(seconds_float);
+            return true;
+        }
+    }
+}
+
+function stripAlphaChars(str) {
+    return str.replace(/[^\d\.]/g, "");
+}
+
+function secondsToText(number) {
+    if (number==1) {
+        return " Second";
+    } else {
+        return " Seconds";
+    }
+}
+function minutesToText(number) {
+    if (number==1) {
+        return " Minute ";
+    } else {
+        return " Minutes ";
+    }
+}
+function hoursToText(number) {
+    if (number==1) {
+        return " Hour ";
+    } else {
+        return " Hours ";
+    }
+}
+function daysToText(number) {
+    if (number==1) {
+        return " Day ";
+    } else {
+        return " Days ";
+    }
+}
+function round(number, precision) {
+    if (precision>0) {
+        multiplier=Math.pow(10,precision);
+        return  Math.round(multiplier*number)/multiplier;    
+    } else {
+        return  Math.round(number); 
+    }
+}
+function secondsToMinutes(seconds) {
+    return seconds/60;
+}
+function secondsToHours(seconds){
+    return seconds/3600;
+}
+function secondsToDays(seconds){
+    return seconds/86400;
+}
+function minutesToSeconds(minutes) {
+    return minutes*60;
+}
+function hoursToSeconds(hours){
+    return hours*3600; 
+}
+function daysToSeconds(days){
+    return days*86400;
+}
+
+//--></script>
+</head>
+<body>
+<form name=ftt id=f action=none method=get style="margin-left:10px">
+ <table align=center cellpadding=0 cellspacing=0 border=0>
+  <tr>
+   <td align=center><font size="-1" face="Arial"> File Size<br>
+    <input name="filesize" type="text" onkeyup="calc()"><br>&nbsp;<br>&nbsp;</font>
+   </td>
+   <td> <select name="fileunits" size="8" onChange="calc()">
+     <option selected value="">File Size Units 
+     <option value="1">Bits
+     <option value="8">Bytes 
+     <option value="8192">Kilobytes 
+     <option value="8388608">Megabytes 
+     <option value="8589934592">Gigabytes 
+     <option value="8796093022208">Terabytes 
+     <option value="9007199254740992">Petabytes
+     </select> </td>
+   <td> <select name="transferunits" size="14" onChange="calc()">
+     <option selected value="">Select Transfer Speed</option>
+     <option value="56000">56 Kbps</option>
+     <option value="128000">128 Kbps </option>
+     <option value="256000">256 Kbps </option>
+     <option value="512000">512 Kbps </option>
+     <option value="768000">768 Kbps </option>
+     <option value="1544000">1.544 Mbps T1/DS1</option> 
+     <option value="2048000">2.048 Mbps E1</option>
+     <option value="10000000">10 Mbps Thin Ethernet</option>
+     <option value="44736000">44.736 Mbps T3/DS3</option>
+     <option value="100000000">100 Mbps Fast Ethernet</option>
+     <option value="155520000">155.52 Mbps OC-3</option>
+     <option value="622080000">622.08 Mbps OC-12</option>
+     <option value="1000000000">1000 Mbps Gig E</option>
+     </select> </td>
+   <td align=center><font size="-1" face="Arial">Resulting time<br>
+    <input name="outputstuff" size="35"><br>&nbsp;<br>&nbsp;</font></td>
+  </tr>
+ </table>
+</form>
+</body>
+</html>
